@@ -1,0 +1,64 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  perspective: 400px;
+}
+
+.cube {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+}
+
+.cube:hover {
+  animation: spin 8s linear infinite;
+}
+
+.side {
+  --size: 200px;
+  width: var(--size);
+  height: var(--size);
+  display: flex;
+  font-size: 1.6rem;
+  justify-content: center;
+  align-items: center;
+  background-color: hsla(220, 100%, 50%, 0.5);
+  border: solid 1px hsla(220, 100%, 20%, 0.5);
+  position: absolute;
+  transform: rotateX(var(--Xdeg, 0)) rotateY(var(--Ydeg, 0))
+    translateZ(calc(var(--size) / 2));
+}
+
+.right {
+  --Ydeg: 90deg;
+}
+
+.left {
+  --Ydeg: -90deg;
+}
+
+.back {
+  --Ydeg: 180deg;
+}
+
+.top {
+  --Xdeg: 90deg;
+}
+
+.bottom {
+  --Xdeg: -90deg;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotateX(360deg) rotateY(360deg) rotateZ(-360deg);
+  }
+}
